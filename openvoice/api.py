@@ -2,14 +2,13 @@ import torch
 import numpy as np
 import re
 import soundfile
-import utils
-import commons
+from . import utils
+from . import commons
 import os
 import librosa
-from text import text_to_sequence
-from mel_processing import spectrogram_torch
-from models import SynthesizerTrn
-
+from .text import text_to_sequence
+from .mel_processing import spectrogram_torch
+from .models import SynthesizerTrn
 
 class OpenVoiceBaseClass(object):
     def __init__(self, 
