@@ -1,9 +1,6 @@
 import os
 import sys
 import re
-from pypinyin import lazy_pinyin, BOPOMOFO
-import jieba
-import cn2an
 import logging
 
 
@@ -234,6 +231,7 @@ _bopomofo_to_ipa2 = [(re.compile('%s' % x[0]), x[1]) for x in [
 
 
 def number_to_chinese(text):
+    import cn2an
     numbers = re.findall(r'\d+(?:\.?\d+)?', text)
     for number in numbers:
         text = text.replace(number, cn2an.an2cn(number), 1)
@@ -241,6 +239,8 @@ def number_to_chinese(text):
 
 
 def chinese_to_bopomofo(text):
+    import jieba
+    from pypinyin import lazy_pinyin, BOPOMOFO
     text = text.replace('、', '，').replace('；', '，').replace('：', '，')
     words = jieba.lcut(text, cut_all=False)
     text = ''

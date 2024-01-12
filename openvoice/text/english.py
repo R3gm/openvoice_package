@@ -17,10 +17,12 @@ hyperparameter. Some cleaners are English-specific. You'll typically want to use
 
 
 import re
-import inflect
-from unidecode import unidecode
-import eng_to_ipa as ipa
-_inflect = inflect.engine()
+try:
+    import inflect
+    _inflect = inflect.engine()
+except:
+    pass  
+    
 _comma_number_re = re.compile(r'([0-9][0-9\,]+[0-9])')
 _decimal_number_re = re.compile(r'([0-9]+\.[0-9]+)')
 _pounds_re = re.compile(r'£([0-9\,]*[0-9]+)')
@@ -158,6 +160,8 @@ def mark_dark_l(text):
 
 
 def english_to_ipa(text):
+    from unidecode import unidecode
+    import eng_to_ipa as ipa
     text = unidecode(text).lower()
     text = expand_abbreviations(text)
     text = normalize_numbers(text)
