@@ -7,6 +7,14 @@
 
 </div>
 
+```
+pip install git+https://github.com/R3gm/openvoice_package.git
+```
+
+```
+from openvoice import se_extractor, api
+```
+
 ## Join Our Community
 
 Join our [Discord community](https://discord.gg/myshell) and select the `Developer` role upon joining to gain exclusive access to our developer-only channel! Don't miss out on valuable discussions and collaboration opportunities.
